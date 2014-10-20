@@ -1,16 +1,16 @@
 === Plugin Name ===
-Contributors: ysalame
+Contributors: comprock,ysalame
 Donate link: http://www.phimind.com/
 Tags: excel, export, excel export, csv, csv export, xls, xls export, xlsx, xlsx export, ods, ods export
 Requires at least: 3.3
-Tested up to: 3.7.1
+Tested up to: 4.1.0
 Stable tag: 0.2
 
-Excel Export Plus
+EE+ easily exports any post type in an Excel-friendly format. Options: Custom Post Types, fields, meta data, filters, and more.
 
 == Description ==
 
-EE+ Alows you to export any type of post data (CPTs included) to excel-friendly formats using an intuitive interface. You have the option to select multiple Post Types, specific fields, meta/custom fields, filter values and split files by number of records.
+EE+ allows you to export any type of post data (CPTs included) to excel-friendly formats using an intuitive interface. You have the option to select multiple Post Types, specific fields, meta/custom fields, filter values and split files by number of records.
 
 Supported formats are XLS, XLSx, CSV and ODS.
 
@@ -60,4 +60,3 @@ Comments are not yet supported by the plugin. It will be in the next version.
 
 = 0.1 =
 * First stable release
-
