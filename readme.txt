@@ -53,6 +53,8 @@ Comments are not yet supported by the plugin. It will be in the next version.
 == Changelog ==
 
 = 0.3.0RC1 =
+* Move screenshots to assets folder
+* Rename main WordPress file as plugin name
 * Revise description
 
 = 0.2 =
