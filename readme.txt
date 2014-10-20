@@ -53,6 +53,9 @@ Comments are not yet supported by the plugin. It will be in the next version.
 == Changelog ==
 
 = 0.2 =
+* Revise description
+
+= 0.2 =
 * Added Presets capability
 * Suppressed php errors
 * Corrected a bug in the filter options
