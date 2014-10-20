@@ -3,7 +3,7 @@
 	Plugin Name: Phimind Excel Export Plus
 	Plugin URI: http://www.phimind.com/phimind_excel_export_plus
 	Description: WP Phimind Excel Export Plus allows you to export selected records to native .xls, .xlsx, csv and osd formats
-	Version: 0.2
+	Version: 0.3.0RC1
 	Author: PhiMind.com
 	Author URI: http://www.phimind.com/
 	*/

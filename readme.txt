@@ -4,7 +4,7 @@ Donate link: http://www.phimind.com/
 Tags: excel, export, excel export, csv, csv export, xls, xls export, xlsx, xlsx export, ods, ods export
 Requires at least: 3.3
 Tested up to: 4.1.0
-Stable tag: 0.2
+Stable tag: 0.3.0RC1
 
 EE+ easily exports any post type in an Excel-friendly format. Options: Custom Post Types, fields, meta data, filters, and more.
 
@@ -52,7 +52,7 @@ Comments are not yet supported by the plugin. It will be in the next version.
 
 == Changelog ==
 
-= 0.2 =
+= 0.3.0RC1 =
 * Revise description
 
 = 0.2 =
