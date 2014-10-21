@@ -441,7 +441,7 @@
 
 			$record_count = 0;
 			$file_list = '';
-			$file_path = $this->plugin_root.DS.'tmp'.DS;
+			$file_path = EEP_DIR . 'tmp/';
 
 			if ($records->max_num_pages > 1)
 			{

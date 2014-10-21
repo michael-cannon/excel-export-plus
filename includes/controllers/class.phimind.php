@@ -45,7 +45,7 @@
 		{
 			//QUEUE THE JS/CSS FOR THIS PLUGIN IF THE PAGE BEING DISPLAYED IS FOR THE PLUGIN
 			//THIS AVOIDS ANY KIND OF CONFLICT WITH CSS THAT IS NOT WELL WRITTEN
-			if ($_GET['page'] == $this->plugin_page_name)
+			if ( ! empty( $_GET['page'] ) && $_GET['page'] == $this->plugin_page_name)
 				add_action('admin_enqueue_scripts', array($this, 'setup_scripts'));
 
 			//ACTIVATE AND DEACTIVATE HOOKS
@@ -153,7 +153,7 @@
 			if (!empty($this->layout))
 			{
 				ob_start();
-				include($this->plugin_root.DS.'views'.DS.'layouts'.DS.$this->layout.'.php');
+				include EEP_DIR_INC . 'views/layouts/' . $this->layout . '.php';
 				$render_output_layout = ob_get_contents();
 				ob_end_clean();
 			}
@@ -165,13 +165,13 @@
 
 			if (empty($this->layout))
 			{
-				include_once($this->plugin_root.DS.'views'.DS.$template.'.php');
+				include EEP_DIR_INC . 'views/' . $template . '.php';
 			} else {
 				$contents_before = substr($render_output_layout, 0, strpos($render_output_layout, '{content_block'));
 				$contents_after = substr($render_output_layout, strpos($render_output_layout, '}') + 1);
 
 				echo $contents_before;
-				include_once($this->plugin_root.DS.'views'.DS.$template.'.php');
+				include_once EEP_DIR_INC . 'views/' . $template . '.php';
 				echo $contents_after;
 			}
 
