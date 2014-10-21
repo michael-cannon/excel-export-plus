@@ -62,7 +62,7 @@ if ( ! defined( 'EEP_VERSION' ) ) {
 }
 
 //CHECKS IF IT IS AN ADMIN PAGE TO INITIATE THE PLUGIN
-if (is_admin()) {
+if ( is_admin() ) {
 	require EEP_DIR_INC . 'controllers/config.php';
 
 	//GET ALL THE CLASSES NEEDED
@@ -76,16 +76,20 @@ if (is_admin()) {
 	$phimind_plugin_manager->init_configuration();
 
 	//TRIGGER AN AJAX METHOD WHEN CALLED
-	if ( ! empty( $_REQUEST["action"] ) && $_REQUEST["action"] == "phimind_excel_export_plus_ajax_call" ) {
-		$method = $_REQUEST["method"];
-		if (@$_REQUEST["class"] != '')
-			$class = new $_REQUEST["class"]();
-		else
+	if ( ! empty( $_REQUEST['action'] ) && 'phimind_excel_export_plus_ajax_call' == $_REQUEST['action'] ) {
+		if ( ! empty( $_REQUEST['class'] ) ) {
+			$class = new $_REQUEST['class']();
+		} else {
 			$class = $phimind_plugin_manager;
+		}
 
-		call_user_method($method, $class);
+		$method = $_REQUEST['method'];
+		if ( method_exists( $class, $method ) ) {
+			$class->$method();
+		} else {
+			error_log( 'Method ' . $method . ' does not exist in class ' . $class . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+		}
 	}
-
 }
 
 ?>

@@ -18,6 +18,7 @@
 					<form name="frm_query_builder" id="frm_query_builder" method="post" action="">
 
 						<div id="div_load_preset" style="display:none;">
+						<?php if ( ! empty( $presets ) && is_array( $presets ) ) : ?>
 							<p>
 								<select class="cmb_select_preset" name="cmb_select_preset" id="cmb_select_preset">
 									<option value="">Select a preset</option>
@@ -29,6 +30,7 @@
 								<a class="btn btn-small btn_add_data_block btn_delete_preset" href="#" title="Delete Preset"><i class="icon-minus"></i> Delete Preset</a>
 								<div id="load_preset_configuration"></div>
 							</p>
+						<?php endif; ?>
 						</div>
 
 						<div id="div_save_preset" style="display:none;">

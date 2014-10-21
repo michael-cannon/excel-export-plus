@@ -147,7 +147,8 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		$array_fields = array();
 		$array_custom_fields = array();
 		if (!empty($_REQUEST["column"])) {
-			for ($i = 0 ; $i < count($_REQUEST["column"]["column_name"]); $i++) {
+			$count_column_name = count($_REQUEST["column"]["column_name"]);
+			for ($i = 0 ; $i < $count_column_name; $i++) {
 				if (!empty($_REQUEST["column"]["column_name"][$i]) && $_REQUEST["column"]["column_name"][$i] != 'custom_field' && empty($this->array_wp_custom_columns[$_REQUEST["column"]["column_name"][$i]]))
 					array_push($array_fields, $_REQUEST["column"]["column_name"][$i]);
 				elseif (!empty($this->array_wp_custom_columns[$_REQUEST["column"]["column_name"][$i]]))
@@ -167,7 +168,8 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 
 		$meta_array = array();
 		if (!empty($_REQUEST["filter"])) {
-			for ($i = 0 ; $i < count($_REQUEST["filter"]) ; $i++) {
+			$count_filter = count($_REQUEST["filter"]['filter_field']);
+			for ($i = 0 ; $i < $count_filter ; $i++) {
 				$filter_field = $_REQUEST["filter"]["filter_field"][$i];
 				$filter_custom_name = $_REQUEST["filter"]["filter_custom_name"][$i];
 				$filter_rule = $_REQUEST["filter"]["filter_rule"][$i];
@@ -214,8 +216,13 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 			}
 		}
 
-		if (empty($args["post_status"]))
-			$args['post_status'] = 'publish';
+		if ( empty($args["post_status"] ) ) {
+			if ( ! in_array( 'attachment', $array_post_type ) ) {
+				$args['post_status'] = 'publish';
+			} else {
+				$args['post_status'] = 'inherit';
+			}
+		}
 
 		if (!empty($meta_array))
 			$args['meta_query'] = $meta_array;
