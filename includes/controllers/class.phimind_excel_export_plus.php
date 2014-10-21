@@ -17,7 +17,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 	var $query_sql;
 
 	function __construct() {
-		require 'config.php';
+		require EEP_DIR_INC . 'config.php';
 
 		parent::__construct($_PHIMIND_CURRENT_CONFIG_VARS);
 		parent::init_configuration();
@@ -90,40 +90,6 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 
 		//GET ALL PRESETS ALREADY REGISTERED
 		$presets = get_option('phimind_excel_export_presets');
-		/*
-			$presetsX = array(
-				array(
-					'name' => 'teste de preset 01',
-					'post_types' => array('question'),
-					'fields' => array(
-						array('ID'),
-						array('post_title'),
-						array('post_date'),
-						array('post_status'),
-						array('permalink'),
-						array('custom_field' , 'meta_question_user_name'),
-						array('custom_field' , 'meta_question_user_email'),
-						array('custom_field' , 'meta_question_user_data_de_nascimento'),
-						array('custom_field' , 'meta_question_user_cidade'),
-						array('custom_field' , 'meta_estado'),
-						array('custom_field' , 'meta_reply'),
-						array('custom_field' , 'meta_tema')
-					),
-					'filters' => array(
-						array('post_status', 'any'),
-						array('ID', '=', '189'),
-						array('custom_field', 'meta_cargo', 'CHAR', 'BETWEEN', 'xpto', 'yzx')
-					)
-				),
-				array(
-					'name' => 'teste de preset 02',
-					'post_types' => array('question', 'politico'),
-					'fields' => array('ID', 'post_name', 'custom_field' => array('meta_cargo'), 'custom_field' => array('imagem_id')),
-					'filters' => array('post_name' => 'teste', 'post_status' => 'any')
-				)
-			);
-			update_option('phimind_excel_export_presets', $presets);
-*/
 
 		$this->set('presets', $presets);
 		$this->set('json_presets', json_encode($presets));
@@ -497,7 +463,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 			$objWriter->setUseBOM(true);
 		$objWriter->save($file_path.$file_name.'.'.$file_extension);
 
-		$download_file_url = '<a href="'.$this->plugin_root_web.'/tmp/'.$file_name.'.'.$file_extension.'">'.$file_name.'.'.$file_extension.'</a><br>';
+		$download_file_url = '<a href="'.$this->plugin_root_web.'tmp/'.$file_name.'.'.$file_extension.'">'.$file_name.'.'.$file_extension.'</a><br>';
 
 		if ($records->post_count > 1)
 			$records_sufix = 's';

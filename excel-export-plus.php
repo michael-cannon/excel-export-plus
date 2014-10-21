@@ -57,13 +57,17 @@ if ( ! defined( 'EEP_NAME' ) ) {
 	define( 'EEP_NAME', 'Excel Export Plus' );
 }
 
+if ( ! defined( 'EEP_URL' ) ) {
+	define( 'EEP_URL', plugins_url( '/', __FILE__ ) );
+}
+
 if ( ! defined( 'EEP_VERSION' ) ) {
 	define( 'EEP_VERSION', '0.3.0RC1' );
 }
 
 //CHECKS IF IT IS AN ADMIN PAGE TO INITIATE THE PLUGIN
 if ( is_admin() ) {
-	require EEP_DIR_INC . 'controllers/config.php';
+	require EEP_DIR_INC . 'config.php';
 
 	//GET ALL THE CLASSES NEEDED
 	require_once EEP_DIR_LIB . 'PHPExcel.php';

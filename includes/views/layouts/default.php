@@ -1,6 +1,6 @@
 
 	<br>
-	<img src="<?php echo $_PHIMIND_CURRENT_CONFIG_VARS["plugin_root_web"]?>/assets/img/header.png">
+	<img src="<?php echo EEP_URL; ?>assets/img/header.png">
 	<br>
 	<br>
 	<div>
