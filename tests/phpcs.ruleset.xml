@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="Aihrus">
+	<description>
+		Custom PHPCS rules to check for Aihrus' WordPress projects
+	</description>
+
+	<exclude-pattern>includes/libraries/</exclude-pattern>
+	<exclude-pattern>tests/</exclude-pattern>
+
+	<rule ref="WordPress-Core"/>
+
+	<!-- Extras -->
+	<rule ref="WordPress.PHP.DiscouragedFunctions"/>
+
+	<!-- VIP -->
+	<rule ref="WordPress.Arrays.ArrayAssignmentRestrictions"/>
+	<rule ref="WordPress.Functions.FunctionRestrictions"/>
+	<rule ref="WordPress.Variables.VariableRestrictions"/>
+</ruleset>
