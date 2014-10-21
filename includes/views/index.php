@@ -60,16 +60,15 @@
 								<select name="post_type[]" class="post_type_selector">
 									<option value="">Select a Post Type</option>
 									<optgroup label="Wordpress Native Post Types">
-								<?php 
+								<?php
 
-								$flag_custom_post_type_title = 0;
-								foreach ($post_types as $post_type):
-									if ($post_type->_builtin == "" && $flag_custom_post_type_title == 0)
-									{
-										echo '<optgroup label="Custom Post Types">';
-										$flag_custom_post_type_title = 1;						
-									}
-								?>
+$flag_custom_post_type_title = 0;
+foreach ($post_types as $post_type):
+	if ($post_type->_builtin == "" && $flag_custom_post_type_title == 0) {
+		echo '<optgroup label="Custom Post Types">';
+		$flag_custom_post_type_title = 1;
+	}
+?>
 									<option class="opt_posttype" id="post_type_<?php echo $post_type->name?>" value="<?php echo $post_type->name?>"> <?php echo $post_type->labels->name?></option>
 								<?php endforeach;?>
 								</select>
@@ -105,7 +104,7 @@
 									<?php endforeach;?>
 									<option value="custom_field"> Custom/Meta Field</option>
 								</select>
-							
+
 								<select name="column[column_custom_name][]" class="column_custom_name_selector" style="display:none" >
 									<option value="">Select a Custom/Meta field</option>
 									<?php foreach ($meta_keys as $meta_key):?>
@@ -136,7 +135,7 @@
 									<optgroup label="Special Fields">
 										<option value="custom_field"> Custom Field</option>
 								</select>
-							
+
 								<input type="text" value="" name="filter[filter_custom_name][]" class="filter_custom_name_selector input-medium" style="display:none;" placeholder="Name">
 
 								<select name="filter[filter_custom_type][]" class="filter_custom_type_selector input-medium" style="display:none; width:100px;">
@@ -171,7 +170,7 @@
 
 								<input style="" type="text" value="" name="filter[filter_value_1][]" class="filter_value_1 input-small" placeholder="Filter Value">
 								<span style="display:none" class="filter_value_2_container">
-									and 
+									and
 									<input type="text" value="" name="filter[filter_value_2][]" class="filter_value_2 input-small" placeholder="Filter Value">
 								</span>
 
@@ -208,7 +207,7 @@
 						<div class="pagination-centered">
 							<a class="btn step_1 next_step_button" href="#" rel="1">Proceed to Step 2 - Export Options <i class="icon-arrow-right"></i></a>
 						</div>
-						
+
 					</form>
 				</div>
 				<div class="tab-pane" id="tab2">
@@ -273,10 +272,10 @@
 					<div class="pagination-centered">
 						<a class="btn step_3 next_step_button" href="#" rel="1"><i class="icon-arrow-left"></i> Go back to Step 2 - Export Options</a>
 					</div>
-					
+
 					<br>
 					<br>
-					
+
 					<div class="download_links"></div>
 				</div>
 			</div>

@@ -1,15 +1,15 @@
 
-	<?php 
+	<?php
 
-		if (!empty($_REQUEST["paged"]))
-			$paged = $_REQUEST["paged"];
-		else
-			$paged = 1;
-	?>
+if (!empty($_REQUEST["paged"]))
+	$paged = $_REQUEST["paged"];
+else
+	$paged = 1;
+?>
 
 	<div class="records_found"><?php echo $records->found_posts?> records found</div>
 
-	<?php if($records->found_posts):?>
+	<?php if ($records->found_posts):?>
 
 	<ul class="pager">
 		<li>
