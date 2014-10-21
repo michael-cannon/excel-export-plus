@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: comprock,ysalame
-Donate link: http://www.phimind.com/
+Donate link: https://aihr.us/about-aihrus/donate/
 Tags: excel, export, excel export, csv, csv export, xls, xls export, xlsx, xlsx export, ods, ods export
 Requires at least: 3.3
 Tested up to: 4.1.0
@@ -16,33 +16,39 @@ Supported formats are XLS, XLSx, CSV and ODS.
 
 This plugin is platform agnostic by using the open-source PHPExcel library that generates Microsoft-based files without the need to run on a Windows platform.
 
-= Development Roadmap (TO-DO List) =
+= TODO List =
 
-- add the possibility to export comments
-- add helper balloons to guide the user
+* Add the possibility to export comments
+* Add helper balloons to guide the user
+
+[More issues](https://github.com/michael-cannon/excel-export-plus/issues).
 
 = FOSS Disclaimer =
 
-Two opensource libraries are included with this plugin (without changes)
-> PHPExcel version 1.7.9 (2013-06-02) - http://phpexcel.codeplex.com
+Two open source libraries are included with this plugin (without changes).
 
-> Twitter Bootstrap CSS Framework version 2.3.2 (2013-05-17) - http://twitter.github.io/bootstrap
+* [PHPExcel version 1.7.9 of 2013-06-02](http://phpexcel.codeplex.com)
+* [Twitter Bootstrap CSS Framework version 2.3.2 of 2013-05-17](http://twitter.github.io/bootstrap)
+
+= Background =
+
+Original author is [Yuri Salame](https://profiles.wordpress.org/ysalame/).
 
 == Installation ==
 
 1. Upload the contents of the plugin to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. In the Admin section a new Menu will be present named PhiMind. On the Sub-Menu "Excel Export +" you will have access to all the plugin functions.
+3. In the Admin section a new menu will be present named "Excel Export +", click there for exporting.
 
 == Frequently Asked Questions ==
 
 = The "Export" is taking too long and generates an error =
 
-This may happen due to memory limitations of your webserver. Unfortunatelly this cannot be bypassed throug code and can only be resolved by requesting you webserver to change your memory limits or by turning on the option "Multiple Files" limiting the amount of records within each file.
+This may happen due to memory limitations of your webserver. Unfortunatelly this cannot be bypassed through code and can only be resolved by requesting you webserver to change your memory limits or by turning on the option "Multiple Files" limiting the amount of records within each file.
 
 = Why can´t I export Comments? =
 
-Comments are not yet supported by the plugin. It will be in the next version.
+Comments are not yet supported by the plugin. It may be in a future version.
 
 == Screenshots ==
 
