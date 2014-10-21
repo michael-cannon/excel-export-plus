@@ -63,6 +63,7 @@ Comments are not yet supported by the plugin. It may be in a future version.
 * Move screenshots to assets folder
 * Rename main WordPress file as plugin name
 * RESOLVE parent_id field is unknown
+* RESOLVE #1 Post Type media and revisions not being selected for export
 * Revise description
 * Swap menu positions
 * Update support URL

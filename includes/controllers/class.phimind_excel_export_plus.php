@@ -217,7 +217,9 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		}
 
 		if ( empty($args["post_status"] ) ) {
-			if ( ! in_array( 'attachment', $array_post_type ) ) {
+			$inherit_post_types = array( 'attachment', 'revision' );
+			$post_type          = array_pop( $array_post_type );
+			if ( ! in_array( $post_type, $inherit_post_types ) ) {
 				$args['post_status'] = 'publish';
 			} else {
 				$args['post_status'] = 'inherit';
