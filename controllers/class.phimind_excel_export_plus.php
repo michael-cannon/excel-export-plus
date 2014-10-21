@@ -199,8 +199,8 @@
 						case "post_status":
 							$args["post_status"] = $filter_status;
 							break;
-						case "parent_id":
-							$args["parent_id"] = $filter_value_1;
+						case "post_parent":
+							$args["post_parent"] = $filter_value_1;
 							break;
 						case "custom_field":
 
@@ -253,6 +253,10 @@
 
 		private function _fetch_posts_records_list()
 		{
+			if ( is_admin() ) {
+				require_once(ABSPATH . 'wp-includes/pluggable.php');
+			}
+
 			//FILTER THE ENTIRE WP_QUERY TO FETCH ONLY SPECIFIC FIELDS (WP DOES NOT DO IT CORRECTLY)
 			add_filter('posts_clauses', array($this, '_filter_query_for_fields'), 20, 1);
 

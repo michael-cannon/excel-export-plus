@@ -77,11 +77,9 @@
 
 		function configure_main_menu()
 		{
-			if (!$this->check_if_menu_exists('phimind'))
-				add_menu_page('PhiMind', 'PhiMind', 'edit_plugins', 'phimind', array($this, 'menu_main_page'));
-
 			$index_class = new $this->plugin_index_class_name();
-			add_submenu_page('phimind', $this->plugin_menu_name, $this->plugin_menu_name, 'edit_plugins', $this->plugin_page_name, array($index_class, 'index'));
+			add_menu_page($this->plugin_menu_name, $this->plugin_menu_name, 'edit_plugins', $this->plugin_page_name, array($index_class, 'index'));
+			add_submenu_page($this->plugin_page_name, 'PhiMind Support', 'Support', 'edit_plugins', 'phimind', array($this, 'menu_main_page'));
 		}
 
 		function check_if_menu_exists($slug)
@@ -102,7 +100,7 @@
 		function menu_main_page()
 		{
 //			echo 'This is the main page for the MENU PHIMIND';
-			$url = 'http://support.phimind.com/projects/welcome_to_admin/host:'.urlencode($_SERVER["HTTP_HOST"]);
+			$url = 'https://wordpress.org/support/plugin/excel-export-plus';
 			$file_location = download_url($url);
 			echo file_get_contents($file_location);
 		}

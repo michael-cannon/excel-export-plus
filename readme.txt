@@ -53,9 +53,13 @@ Comments are not yet supported by the plugin. It will be in the next version.
 == Changelog ==
 
 = 0.3.0RC1 =
+* Change amdin menu labeling
 * Move screenshots to assets folder
 * Rename main WordPress file as plugin name
+* RESOLVE parent_id field is unknown
 * Revise description
+* Swap menu positions
+* Update support URL
 
 = 0.2 =
 * Added Presets capability
