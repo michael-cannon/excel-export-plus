@@ -54,10 +54,10 @@ class phimind_plugin_manager_0_1 {
 
 
 	function setup_scripts() {
-		wp_register_script('bootstrap', EEP_URL_LIB . 'bootstrap/dist/js/bootstrap.min.js', array('jquery'), '2.3.2', true);
+		wp_register_script('bootstrap', EEP_URL_LIB . 'bootstrap/js/bootstrap.js', array('jquery'), '2.3.2', true);
 		wp_enqueue_script('bootstrap');
 
-		wp_register_style('bootstrap', EEP_URL_LIB . 'bootstrap/dist/css/bootstrap.min.css', array(), '2.3.2', 'all');
+		wp_register_style('bootstrap', EEP_URL_LIB . 'bootstrap/css/bootstrap.css', array(), '2.3.2', 'all');
 		wp_enqueue_style('bootstrap');
 
 		wp_register_script('global_js', EEP_URL . 'assets/js/global.js', array('jquery'), $this->version, true);
