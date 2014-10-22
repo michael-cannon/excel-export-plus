@@ -28,7 +28,7 @@ This plugin is platform agnostic by using the open-source PHPExcel library that 
 Two open source libraries are included with this plugin (without changes).
 
 * [PHPExcel 1.8.0](http://phpexcel.codeplex.com)
-* [Twitter Bootstrap CSS Framework version 2.3.2 of 2013-05-17](http://twitter.github.io/bootstrap)
+* [Bootstrap 2.3.2](https://github.com/twbs/bootstrap)
 
 = Background =
 
