@@ -1,102 +1,119 @@
-select {
-	margin-bottom: 0;
+select
+{
+	margin-bottom:0;
 }
 
-legend {
-	margin-bottom: 10px;
+legend
+{
+	margin-bottom:10px;
 }
 
-input[type=text] {
-	margin-bottom: 2px;
-	height: 27px;
+input[type=text]
+{
+	height:27px;
+	margin-bottom:2px;
 }
 
-.data_block {
+.data_block
+{
 	padding-bottom:5px;
 }
 
-.parameter_container {
+.parameter_container
+{
 	padding-bottom:15px;
 }
-.parameter_container legend {
-	font-weight:bold;
+
+.parameter_container legend
+{
+	font-weight:700;
 }
 
-select option[disabled] {
-	display: none;
+select option[disabled]
+{
+	display:none;
 }
 
-#record_result {
-	border: 1px solid #CCCCCC;
-	height: 360px;
-	overflow: auto;
-	width: 800px;
+#record_result
+{
+	border:1px solid #CCC;
+	height:360px;
+	overflow:auto;
+	width:800px;
 }
 
 #record_result .records_found
 {
-	border: none;
+	border:none;
 	padding:3px;
 	text-align:center;
 }
 
 #record_result .navigation
 {
-	border: none;
+	border:none;
 	padding:3px;
 	text-align:center;
 }
 
-.next_step_button {
-	margin:0 auto;
-	border:1px solid #CCCCCC;
-	color:#CCCCCC;
-	background:#EEEEEE;
+.next_step_button
+{
+	background:#EEE;
+	border:1px solid #CCC;
+	color:#CCC;
+	margin:0 10px 0 auto;
 	padding:10px;
-	margin-right:10px;
 }
 
-.next_step_button.enabled {
-	border:1px solid #AAAAAA;
-	color:#FFFFFF;
-	background:#66CC99;
+.next_step_button.enabled
+{
+	background:#6C9;
+	border:1px solid #AAA;
+	color:#FFF;
 	cursor:pointer;
 }
 
-.form_export_button {
-	color:#CCCCCC;
-	background:#EEEEEE;
+.form_export_button
+{
+	background:#EEE;
+	color:#CCC;
 }
 
-.form_export_button.enabled {
-	color:#FFFFFF;
-	background:#66CC99;
+.form_export_button.enabled
+{
+	background:#6C9;
+	color:#FFF;
 	cursor:pointer;
 }
 
-#record_count_html, #file_count_html {
-	font-weight:bold;
+#record_count_html,#file_count_html
+{
+	font-weight:700;
 }
 
-[rel=popover][data-color=green] + .popover {
-	background: #dff0d8;
+[rel=popover][data-color=green] + .popover
+{
+	background:#dff0d8;
 }
 
-#tab1 {
+#tab1
+{
 	position:relative;
 }
 
-.preset_buttons {
-	width: 120px;
-	position: absolute;
-	right: 0;
+.preset_buttons
+{
+	position:absolute;
+	right:0;
+	width:120px;
 }
 
-body {
-	height: initial;
+body
+{
+	height:initial;
 }
 
-ol.wp-submenu,
-ul.wp-submenu {
-	margin: 0;
+ol.wp-submenu,ul.wp-submenu
+{
+	margin:0;
 }
