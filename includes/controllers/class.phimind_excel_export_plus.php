@@ -52,6 +52,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		$this->array_wp_custom_columns["post_parent_name"] = "Post Parent Name (Slug)";
 		$this->array_wp_custom_columns["post_parent_permalink"] = "Post Parent Permalink";
 		//   $this->array_wp_custom_columns["post_type_nice_name"] = "Post Type (Nice name)";
+		$this->array_wp_custom_columns["categories"] = "Categories";
 
 		$this->array_wp_filter_columns["ID"] = "ID";
 		$this->array_wp_filter_columns["post_name"] = "Name (slug)";
@@ -278,6 +279,15 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 							break;
 						case "post_parent_permalink":
 							$field_value = get_permalink($post->post_parent);
+							break;
+						case "categories":
+							global $wpdb;
+							$query = "SELECT GROUP_CONCAT(t.name) as categories
+								FROM ".$wpdb->prefix."term_relationships tr
+								INNER JOIN ".$wpdb->prefix."term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+								INNER JOIN ".$wpdb->prefix."terms t ON t.term_id = tt.term_id
+								WHERE object_id = $post->ID ";
+							$field_value = $wpdb->get_var( $query );
 							break;
 						}
 						$post->$column_name = $field_value;
