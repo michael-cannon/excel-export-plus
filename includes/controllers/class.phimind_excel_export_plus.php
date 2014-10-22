@@ -26,33 +26,35 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		$this->array_wp_columns["post_name"] = "Name (slug)";
 		$this->array_wp_columns["post_title"] = "Title";
 		$this->array_wp_columns["post_date"] = "Date";
-		$this->array_wp_columns["post_date_gmt"] = "Date GMT";
+
 		$this->array_wp_columns["post_author"] = "Author ID";
-		$this->array_wp_columns["post_content"] = "Content";
-		$this->array_wp_columns["post_excerpt"] = "Excerpt";
-		$this->array_wp_columns["post_status"] = "Status";
+		$this->array_wp_columns["comment_count"] = "Comment Count";
 		$this->array_wp_columns["comment_status"] = "Comment Status";
-		$this->array_wp_columns["ping_status"] = "Ping Status";
-		$this->array_wp_columns["to_ping"] = "To Ping";
+		$this->array_wp_columns["post_content"] = "Content";
+		$this->array_wp_columns["post_content_filtered"] = "Content Filtered";
+		$this->array_wp_columns["post_date_gmt"] = "Date GMT";
+		$this->array_wp_columns["post_excerpt"] = "Excerpt";
+		$this->array_wp_columns["guid"] = "GUID (Explicit URL)";
+		$this->array_wp_columns["menu_order"] = "Menu Order";
 		$this->array_wp_columns["pinged"] = "Pinged";
-		$this->array_wp_columns["post_password"] = "Post Password";
+		$this->array_wp_columns["ping_status"] = "Ping Status";
+		$this->array_wp_columns["post_mime_type"] = "Post Mime Type";
 		$this->array_wp_columns["post_modified"] = "Post Modified Date";
 		$this->array_wp_columns["post_modified_gmt"] = "Post Modified Date GMT";
-		$this->array_wp_columns["post_content_filtered"] = "Content Filtered";
 		$this->array_wp_columns["post_parent"] = "Post Parent ID";
-		$this->array_wp_columns["guid"] = "Guid (Explicit URL)";
-		$this->array_wp_columns["menu_order"] = "Menu Order";
+		$this->array_wp_columns["post_password"] = "Post Password";
 		$this->array_wp_columns["post_type"] = "Post Type";
-		$this->array_wp_columns["post_mime_type"] = "Post Mime Type";
-		$this->array_wp_columns["comment_count"] = "Comment Count";
+		$this->array_wp_columns["post_status"] = "Status";
+		$this->array_wp_columns["to_ping"] = "To Ping";
 
-		$this->array_wp_custom_columns["permalink"] = "Permalink (Nice URL)";
 		$this->array_wp_custom_columns["post_author_name"] = "Author Name";
-		$this->array_wp_custom_columns["post_parent_title"] = "Post Parent Title";
+		$this->array_wp_custom_columns["categories"] = "Categories";
+		$this->array_wp_custom_columns["permalink"] = "Permalink (Nice URL)";
 		$this->array_wp_custom_columns["post_parent_name"] = "Post Parent Name (Slug)";
 		$this->array_wp_custom_columns["post_parent_permalink"] = "Post Parent Permalink";
-		//   $this->array_wp_custom_columns["post_type_nice_name"] = "Post Type (Nice name)";
-		$this->array_wp_custom_columns["categories"] = "Categories";
+		$this->array_wp_custom_columns["post_parent_title"] = "Post Parent Title";
+		$this->array_wp_custom_columns["post_tags"] = "Tags";
+		// $this->array_wp_custom_columns["post_type_nice_name"] = "Post Type (Nice name)";
 
 		$this->array_wp_filter_columns["ID"] = "ID";
 		$this->array_wp_filter_columns["post_name"] = "Name (slug)";
@@ -266,28 +268,51 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 							$user = get_userdata($post->post_author);
 							$field_value = $user->display_name;
 							break;
+
 						case "permalink":
 							$field_value = get_permalink($post->ID);
 							break;
+
 						case "post_parent_title":
 							$parent_post = get_post($post->post_parent);
 							$field_value = $parent_post->post_title;
 							break;
+
 						case "post_parent_name":
 							$parent_post = get_post($post->post_parent);
 							$field_value = $parent_post->post_name;
 							break;
+
 						case "post_parent_permalink":
 							$field_value = get_permalink($post->post_parent);
 							break;
+
 						case "categories":
-							global $wpdb;
-							$query = "SELECT GROUP_CONCAT(t.name) as categories
-								FROM ".$wpdb->prefix."term_relationships tr
-								INNER JOIN ".$wpdb->prefix."term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-								INNER JOIN ".$wpdb->prefix."terms t ON t.term_id = tt.term_id
-								WHERE object_id = $post->ID ";
-							$field_value = $wpdb->get_var( $query );
+							$categories = wp_get_post_categories( $post->ID );
+							if ( ! empty( $categories ) ) {
+								$cats = array();
+								foreach( $categories as $cat_id ) {
+									$category = get_category( $cat_id );
+									$cats[]   = $category->name;
+								}
+								$field_value = implode( ',', $cats );
+							} else {
+								$field_value = '';
+							}
+							break;
+
+						case "post_tags":
+							$post_tags = wp_get_post_tags( $post->ID );
+							if ( ! empty( $post_tags ) ) {
+								$tags = array();
+								foreach( $post_tags as $cat_id ) {
+									$tag = get_tag( $cat_id );
+									$tags[]   = $tag->name;
+								}
+								$field_value = implode( ',', $tags );
+							} else {
+								$field_value = '';
+							}
 							break;
 						}
 						$post->$column_name = $field_value;

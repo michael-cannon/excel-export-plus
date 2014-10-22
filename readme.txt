@@ -65,11 +65,11 @@ Comments are not yet supported by the plugin. It may be in a future version.
 = 0.3.0RC1 =
 * Change amdin menu labeling
 * Move screenshots to assets folder
-* RELATES #3 Include categories in export
 * Removed excess CSS and JavaScript
 * Removed support page
 * Rename main WordPress file as plugin name
 * RESOLVE #1 Post Type media and revisions not being selected for export
+* RESOLVE #3 Include taxonomy in export
 * RESOLVE parent_id field is unknown
 * Revise description
 * Swap menu positions
