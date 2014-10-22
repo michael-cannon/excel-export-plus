@@ -50,27 +50,20 @@ class phimind_plugin_manager_0_1 {
 	function configure_main_menu() {
 		$index_class = new $this->plugin_index_class_name();
 		add_menu_page($this->plugin_menu_name, $this->plugin_menu_name, 'edit_plugins', $this->plugin_page_name, array($index_class, 'index'));
-		add_submenu_page($this->plugin_page_name, 'Excel Export Plus Support', 'Support', 'edit_plugins', 'phimind', array($this, 'menu_main_page'));
-	}
-
-
-	function menu_main_page() {
-		$url = 'https://wordpress.org/support/plugin/excel-export-plus';
-		echo file_get_contents($url);
 	}
 
 
 	function setup_scripts() {
-		wp_register_script('bootstrap_js', $this->plugin_root_web.'assets/css/bootstrap/js/bootstrap.min.js', array('jquery'), '1.0', true);
-		wp_enqueue_script('bootstrap_js');
+		wp_register_script('bootstrap', EEP_URL_LIB . 'bootstrap/dist/js/bootstrap.min.js', array('jquery'), '2.3.2', true);
+		wp_enqueue_script('bootstrap');
 
-		wp_register_style('bootstrap_css', $this->plugin_root_web.'assets/css/bootstrap/css/bootstrap.min.css', array(), '1.0', 'all');
-		wp_enqueue_style('bootstrap_css');
+		wp_register_style('bootstrap', EEP_URL_LIB . 'bootstrap/dist/css/bootstrap.min.css', array(), '2.3.2', 'all');
+		wp_enqueue_style('bootstrap');
 
-		wp_register_script('global_js', $this->plugin_root_web.'assets/js/global.js', array('jquery'), '1.0', true);
+		wp_register_script('global_js', EEP_URL . 'assets/js/global.js', array('jquery'), $this->version, true);
 		wp_enqueue_script('global_js');
 
-		wp_register_style('global_css', $this->plugin_root_web.'assets/css/global.css', array(), '1.0', 'all');
+		wp_register_style('global_css', EEP_URL . 'assets/css/global.css', array(), $this->version, 'all');
 		wp_enqueue_style('global_css');
 	}
 

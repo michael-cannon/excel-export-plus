@@ -199,7 +199,7 @@ foreach ($post_types as $post_type):
 							</div>
 
 							<div id="record_result"></div>
-							<div style="text-align:right;"><a class="thickbox" href="#TB_inline?width=600&height=400&inlineId=div_debug_sql">Sql Debug</a></div>
+							<div style="text-align:right;"><a class="thickbox" href="#TB_inline?width=600&height=400&inlineId=div_debug_sql">SQL Debug</a></div>
 							<div id="div_debug_sql" style="display:none;"><p><div id="debug_sql"></div></p></div>
 
 						</fieldset>

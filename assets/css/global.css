@@ -16,8 +16,6 @@ input[type=text] {
 }
 
 .parameter_container {
-	/*border:1px solid #CCCCCC; */
-	/*width:775px;*/
 	padding-bottom:15px;
 }
 .parameter_container legend {
@@ -92,6 +90,10 @@ select option[disabled] {
 	width: 120px;
 	position: absolute;
 	right: 0px;		
+}
+
+body {
+	height: initial;
 }
 
 ol.wp-submenu,

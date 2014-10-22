@@ -42,6 +42,10 @@ Original author is [Yuri Salame](https://profiles.wordpress.org/ysalame/).
 
 == Frequently Asked Questions ==
 
+= Where do I report an issue? =
+
+In the [support forums](https://wordpress.org/support/plugin/excel-export-plus);
+
 = The "Export" is taking too long and generates an error =
 
 This may happen due to memory limitations of your webserver. Unfortunatelly this cannot be bypassed through code and can only be resolved by requesting you webserver to change your memory limits or by turning on the option "Multiple Files" limiting the amount of records within each file.
@@ -62,6 +66,7 @@ Comments are not yet supported by the plugin. It may be in a future version.
 * Change amdin menu labeling
 * Move screenshots to assets folder
 * Removed excess CSS and JavaScript
+* Removed support page
 * Rename main WordPress file as plugin name
 * RESOLVE parent_id field is unknown
 * RESOLVE #1 Post Type media and revisions not being selected for export

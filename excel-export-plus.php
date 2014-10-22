@@ -61,6 +61,10 @@ if ( ! defined( 'EEP_URL' ) ) {
 	define( 'EEP_URL', plugins_url( '/', __FILE__ ) );
 }
 
+if ( ! defined( 'EEP_URL_LIB' ) ) {
+	define( 'EEP_URL_LIB', EEP_URL . 'includes/libraries/' );
+}
+
 if ( ! defined( 'EEP_VERSION' ) ) {
 	define( 'EEP_VERSION', '0.3.0RC1' );
 }
