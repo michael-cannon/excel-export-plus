@@ -80,7 +80,7 @@ if ( is_admin() ) {
 	require_once EEP_DIR_INC . 'controllers/class.phimind_excel_export_plus.php';
 
 	//INSTANTIATE THE BASE CLASS AND TRIGGER THE INIT_CONFIGURATION METHOD
-	$phimind_plugin_manager = new phimind_plugin_manager_0_1($_PHIMIND_CURRENT_CONFIG_VARS);
+	$phimind_plugin_manager = new phimind_plugin_manager_0_1( $_PHIMIND_CURRENT_CONFIG_VARS );
 	$phimind_plugin_manager->init_configuration();
 
 	//TRIGGER AN AJAX METHOD WHEN CALLED

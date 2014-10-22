@@ -1,5 +1,5 @@
 select {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 legend {
@@ -9,7 +9,7 @@ legend {
 input[type=text] {
 	margin-bottom: 2px;
 	height: 27px;
-} 
+}
 
 .data_block {
 	padding-bottom:5px;
@@ -35,21 +35,21 @@ select option[disabled] {
 
 #record_result .records_found
 {
-	border:0px solid #CCCCCC;
+	border: none;
 	padding:3px;
 	text-align:center;
 }
 
 #record_result .navigation
 {
-	border:0px solid #CCCCCC;
+	border: none;
 	padding:3px;
 	text-align:center;
 }
 
 .next_step_button {
-	margin:0 auto; 
-	border:1px solid #CCCCCC; 
+	margin:0 auto;
+	border:1px solid #CCCCCC;
 	color:#CCCCCC;
 	background:#EEEEEE;
 	padding:10px;
@@ -57,7 +57,7 @@ select option[disabled] {
 }
 
 .next_step_button.enabled {
-	border:1px solid #AAAAAA; 
+	border:1px solid #AAAAAA;
 	color:#FFFFFF;
 	background:#66CC99;
 	cursor:pointer;
@@ -89,7 +89,7 @@ select option[disabled] {
 .preset_buttons {
 	width: 120px;
 	position: absolute;
-	right: 0px;		
+	right: 0;
 }
 
 body {
