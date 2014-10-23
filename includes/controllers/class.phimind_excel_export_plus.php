@@ -475,21 +475,20 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		}
 
 		switch ($_REQUEST["rad_format"]) {
-		case "xlsx":
-			$php_excel_format = 'Excel2007';
-			$file_extension = 'xlsx';
-			break;
 		case "xls":
 			$php_excel_format = 'Excel5';
 			$file_extension = 'xls';
 			break;
+
 		case "csv":
 			$php_excel_format = 'CSV';
 			$file_extension = 'csv';
 			break;
-		case "ods":
-			$php_excel_format = 'ODS';
-			$file_extension = 'ods';
+
+		default:
+		case "xlsx":
+			$php_excel_format = 'Excel2007';
+			$file_extension = 'xlsx';
 			break;
 		}
 

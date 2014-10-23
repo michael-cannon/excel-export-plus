@@ -229,7 +229,6 @@ foreach ($post_types as $post_type):
 									<li><input type="radio" name="rad_format" value="xlsx"> .xlsx (MS Excel 2007 and newer)</li>
 									<li><input type="radio" name="rad_format" value="xls"> .xls (MS Excel 2005 and older)</li>
 									<li><input type="radio" name="rad_format" value="csv"> .csv (Comma-separated values)</li>
-									<li><input type="radio" name="rad_format" value="ods"> .ods (Open/Libre Office)</li>
 								</ul>
 							</div>
 						</fieldset>

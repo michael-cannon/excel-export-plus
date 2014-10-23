@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: comprock,ysalame
 Donate link: https://aihr.us/about-aihrus/donate/
-Tags: excel, export, excel export, csv, csv export, xls, xls export, xlsx, xlsx export, ods, ods export
+Tags: excel, export, excel export, csv, csv export, xls, xls export, xlsx, xlsx export
 Requires at least: 3.3
 Tested up to: 4.1.0
 Stable tag: 0.3.0RC1
@@ -12,7 +12,7 @@ EE+ easily exports any post type in an Excel-friendly format. Options: Custom Po
 
 EE+ allows you to export any type of post data (CPTs included) to excel-friendly formats using an intuitive interface. You have the option to select multiple Post Types, specific fields, meta/custom fields, filter values and split files by number of records.
 
-Supported formats are XLS, XLSx, CSV and ODS.
+Supported formats are XLS, XLSx, and CSV.
 
 This plugin is platform agnostic by using the open-source PHPExcel library that generates Microsoft-based files without the need to run on a Windows platform.
 
@@ -70,6 +70,7 @@ Comments are not yet supported by the plugin. It may be in a future version.
 * Rename main WordPress file as plugin name
 * RESOLVE #1 Post Type media and revisions not being selected for export
 * RESOLVE #3 Include taxonomy in export
+* RESOLVE #4 xlsx and ods export problems
 * RESOLVE parent_id field is unknown
 * Revise description
 * Swap menu positions
