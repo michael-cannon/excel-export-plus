@@ -236,7 +236,7 @@ foreach ($post_types as $post_type):
 						<fieldset class="parameter_container">
 							<legend>File Configuration</legend>
 							<div style="padding-left:20px; padding-bottom:10px;">
-								Split into multiples files with <input type="text" value="" name="split_file_records_number" id="split_file_records_number" class="input-mini"> records each
+								Split into multiples files with <input type="text" value="500" name="split_file_records_number" id="split_file_records_number" class="input-mini"> records each. More than 500 may not work.
 								<br>
 								<span id="record_count_html"></span> record(s) to be exported.
 								<br>
