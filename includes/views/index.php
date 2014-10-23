@@ -100,6 +100,10 @@ foreach ($post_types as $post_type):
 									<?php foreach ($array_wp_columns as $column_name => $column_description):?>
 									<option value="<?php echo $column_name?>" <?php if ($column_name == $default_column):?>selected<?php endif?>> <?php echo $column_description?></option>
 									<?php endforeach;?>
+									<optgroup label="Taxnomies">
+									<?php foreach ($array_wp_custom_taxonomy as $column_name => $column_description):?>
+									<option value="<?php echo $column_name?>" <?php if ($column_name == $default_column):?>selected<?php endif?>> <?php echo $column_description?></option>
+									<?php endforeach;?>
 									<optgroup label="Custom Columns">
 									<?php foreach ($array_wp_custom_columns as $column_name => $column_description):?>
 									<option value="<?php echo $column_name?>" <?php if ($column_name == $default_column):?>selected<?php endif?>> <?php echo $column_description?></option>
