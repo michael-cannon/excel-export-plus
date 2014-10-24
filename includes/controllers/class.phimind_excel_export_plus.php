@@ -138,13 +138,17 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 
 		$array_fields = array();
 		$array_custom_fields = array();
-		if (!empty($_REQUEST['column'])) {
-			$count_column_name = count($_REQUEST['column']['column_name']);
-			for ($i = 0 ; $i < $count_column_name; $i++) {
-				if (!empty($_REQUEST['column']['column_name'][$i]) && $_REQUEST['column']['column_name'][$i] != 'custom_field' && empty($this->array_wp_custom_taxonomy[$_REQUEST['column']['column_name'][$i]]) && empty($this->array_wp_custom_columns[$_REQUEST['column']['column_name'][$i]]))
-					array_push($array_fields, $_REQUEST['column']['column_name'][$i]);
-				elseif (!empty($this->array_wp_custom_taxonomy[$_REQUEST['column']['column_name'][$i]]) || !empty($this->array_wp_custom_columns[$_REQUEST['column']['column_name'][$i]]))
-					array_push($array_custom_fields, $_REQUEST['column']['column_name'][$i]);
+		if ( ! empty( $_REQUEST['column'] ) ) {
+			$count_column_name = count( $_REQUEST['column']['column_name'] );
+			for ( $i = 0; $i < $count_column_name; $i++ ) {
+				$field        = $_REQUEST['column']['column_name'][ $i ];
+				$is_empty_tax = false === stristr( $field, $this->custom_key );
+				$is_empty_col = empty( $this->array_wp_custom_columns[ $field ] );
+				if ( ! empty( $field ) && 'custom_field' != $field && $is_empty_tax && $is_empty_col ) {
+					array_push( $array_fields, $field );
+				} elseif ( ! $is_empty_tax || ! $is_empty_col ) {
+					array_push( $array_custom_fields, $field );
+				}
 			}
 		}
 
@@ -231,7 +235,8 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		//FETCH ONLY THE FIELDS THAT ARE NOT EMPTY
 		$array_valid_fields = array();
 		foreach ($this->query_args['fields'] as $field)
-			if (!empty($field) && empty($this->array_wp_custom_taxonomy[$field]) && empty($this->array_wp_custom_columns[$field]))
+			$is_empty_tax = false === stristr( $field, $this->custom_key );
+			if (!empty($field) && $is_empty_tax && empty($this->array_wp_custom_columns[$field]))
 				array_push($array_valid_fields, $wpdb->posts.'.'.$field);
 
 			//CREATE THE STRING FOR THE FIELDS
@@ -270,6 +275,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 				$column_name = $_REQUEST['column']['column_name'][$i];
 
 				//FETCH META VALUES
+				$is_empty_tax = false === stristr( $column_name, $this->custom_key );
 				if ($column_name == 'custom_field') {
 					$meta_name = $_REQUEST['column']['column_custom_name'][$i];
 					if (!empty($meta_name)) {
@@ -279,9 +285,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 							$post->$meta_name = $column_value;
 						}
 					}
-				}
-				elseif (!empty($this->array_wp_custom_taxonomy[$column_name]) || !empty($this->array_wp_custom_columns[$column_name])) {
-					error_log( print_r( $column_name, true ) . ':' . __LINE__ . ':' . basename( __FILE__ ) );
+				} elseif ( ! $is_empty_tax || ! empty( $this->array_wp_custom_columns[$column_name] ) ) {
 					//FETCH CUSTOM COLUMN VALUES
 					foreach ($records->posts as $post) {
 						$field_value = 'TO-DO';
@@ -316,14 +320,17 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 							if ( false !== stristr( $column_name, $this->custom_key ) ) {
 								$parts    = explode( $this->custom_separator, $column_name );
 								$taxonomy = array_pop( $parts );
-								$terms    = wp_get_object_terms( $post->ID, $taxonomy );
-								if ( ! empty( $terms ) ) {
-									$holder = array();
-									foreach( $terms as $term ) {
-										$holder[] = $term->name;
-									}
-									$field_value = implode( ',', $holder );
-								}
+
+								global $wpdb;
+
+								$query = "
+									SELECT GROUP_CONCAT(t.name) as terms
+									FROM {$wpdb->prefix}term_relationships tr
+									INNER JOIN {$wpdb->prefix}term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+									INNER JOIN {$wpdb->prefix}terms t ON t.term_id = tt.term_id
+									WHERE object_id = {$post->ID}
+								   	AND taxonomy = '{$taxonomy}'";
+								$field_value = $wpdb->get_var( $query );
 							}
 							break;
 						}
@@ -372,12 +379,21 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		$array_data = array();
 
 		//SET THE HEADERS FOR THE BASIC FIELDS
-		foreach ($records->query_vars['fields'] as $field)
+		foreach ($records->query_vars['fields'] as $field) {
 			array_push($array_headers, $this->array_wp_columns[$field]);
+		}
 
 		//SET THE HEADERS FOR THE CUSTOM FIELDS
 		foreach ($records->query_vars['custom_fields'] as $field) {
-			$header = ! empty( $this->array_wp_custom_taxonomy[$field] ) ? $this->array_wp_custom_taxonomy[$field] : $this->array_wp_custom_columns[$field];
+			$is_empty_tax = false === stristr( $field, $this->custom_key );
+			if ( ! $is_empty_tax ) {
+				$parts  = explode( $this->custom_separator, $field );
+				$header = array_pop( $parts );
+				$header = ucwords( $header );
+			} else {
+				$header = $this->array_wp_custom_columns[$field];
+			}
+
 			array_push( $array_headers, $header );
 		}
 
