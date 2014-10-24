@@ -56,6 +56,10 @@ This may happen due to memory limitations of your webserver. Unfortunatelly this
 
 Comments are not yet supported by the plugin. It may be in a future version.
 
+= How do I remove the menu item? =
+
+Use filter `eep_menu_page_capability` to adjust the capability allowed access.
+
 
 == Screenshots ==
 
