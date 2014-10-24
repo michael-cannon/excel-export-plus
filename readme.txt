@@ -81,6 +81,7 @@ None
 * RESOLVE #2 Custom Post Types not selecting for export
 * RESOLVE #3 Include taxonomy in export
 * RESOLVE #4 xlsx and ods export problems
+* RESOLVE #8 Implement configurable capability
 * RESOLVE Menu positioning via CSS is off
 * RESOLVE parent_id field is unknown
 * Revise description

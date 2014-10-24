@@ -49,7 +49,8 @@ class phimind_plugin_manager_0_1 {
 
 	function configure_main_menu() {
 		$index_class = new $this->plugin_index_class_name();
-		add_menu_page($this->plugin_menu_name, $this->plugin_menu_name, 'edit_plugins', $this->plugin_page_name, array($index_class, 'index'));
+		$capability  = apply_filters( 'phimind_excel_export_capability', 'edit_plugins' );
+		add_menu_page( $this->plugin_menu_name, $this->plugin_menu_name, $capability, $this->plugin_page_name, array( $index_class, 'index' ) );
 	}
 
 
