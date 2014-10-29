@@ -81,6 +81,7 @@ None
 * Removed excess CSS and JavaScript
 * Removed support page
 * Rename main WordPress file as plugin name
+* Rename "Name (slug)" as "Slug"
 * RESOLVE #1 Post Type media and revisions not being selected for export
 * RESOLVE #2 Custom Post Types not selecting for export
 * RESOLVE #3 Include taxonomy in export
@@ -88,6 +89,7 @@ None
 * RESOLVE #8 Implement configurable capability
 * RESOLVE Menu positioning via CSS is off
 * RESOLVE parent_id field is unknown
+* RESOLVE fields missing in query
 * Revise description
 * Update support URL
 * Update to PHPExcel 1.8.0

@@ -27,7 +27,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		parent::init_configuration();
 
 		$this->array_wp_columns['ID'] = 'ID';
-		$this->array_wp_columns['post_name'] = 'Name (slug)';
+		$this->array_wp_columns['post_name'] = 'Slug';
 		$this->array_wp_columns['post_title'] = 'Title';
 		$this->array_wp_columns['post_date'] = 'Date';
 
@@ -60,7 +60,7 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 		$this->array_wp_custom_columns['post_parent_title'] = 'Post Parent Title';
 
 		$this->array_wp_filter_columns['ID'] = 'ID';
-		$this->array_wp_filter_columns['post_name'] = 'Name (slug)';
+		$this->array_wp_filter_columns['post_name'] = 'Slug';
 		$this->array_wp_filter_columns['post_status'] = 'Status';
 		$this->array_wp_filter_columns['post_parent'] = 'Post Parent ID';
 
@@ -234,13 +234,16 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 
 		//FETCH ONLY THE FIELDS THAT ARE NOT EMPTY
 		$array_valid_fields = array();
-		foreach ($this->query_args['fields'] as $field)
-			$is_empty_tax = false === stristr( $field, $this->custom_key );
-			if (!empty($field) && $is_empty_tax && empty($this->array_wp_custom_columns[$field]))
-				array_push($array_valid_fields, $wpdb->posts.'.'.$field);
+		foreach ( $this->query_args['fields'] as $field ) {
+			$is_empty_tax    = false === stristr( $field, $this->custom_key );
+			$is_empty_custom = empty( $this->array_wp_custom_columns[ $field ] );
+			if ( ! empty( $field ) && $is_empty_tax && $is_empty_custom ) {
+				array_push( $array_valid_fields, $wpdb->posts . '.' . $field );
+			}
+		}
 
-			//CREATE THE STRING FOR THE FIELDS
-			$fields = implode(', ', $array_valid_fields);
+		//CREATE THE STRING FOR THE FIELDS
+		$fields = implode( ', ', $array_valid_fields );
 
 		//APPEND THE ID/POST_PARENT/NAME/AUTHOR_ID FIELDS THAT WP NEEDS FOR BASIC FUNCTIONS LIKE GET_PERMALINK, ETC...
 		$fields = $fields.', '.$wpdb->posts.'.ID, '.$wpdb->posts.'.post_parent, '.$wpdb->posts.'.post_name, '.$wpdb->posts.'.post_author, '.$wpdb->posts.'.post_type';
