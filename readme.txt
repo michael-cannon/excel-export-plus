@@ -1,7 +1,7 @@
 === Excel Export Plus ===
 
 Contributors: comprock,ysalame
-Donate link: https://aihr.us/about-aihrus/donate/
+Donate link: http://axelerant.com/about-axelerant/donate/
 Tags: excel, export, excel export, csv, csv export, xls, xls export, xlsx, xlsx export
 Requires at least: 3.3
 Tested up to: 4.1.0
