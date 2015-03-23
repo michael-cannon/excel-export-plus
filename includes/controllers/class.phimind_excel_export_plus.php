@@ -418,11 +418,11 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 
 			//SET THE DATA FOR THE CUSTOM FIELDS
 			foreach ($records->query_vars['custom_fields'] as $field)
-				array_push($array_single_record, $record->$field);
+				array_push($array_single_record, is_array($record->$field)? implode(',', $this->array_flatten($record->$field)) : $record->$field);
 
 			//SET THE DATA FOR THE META FIELDS
 			foreach ($this->array_meta_columns as $meta_field)
-				array_push($array_single_record, $record->$meta_field);
+				array_push($array_single_record, is_array($record->$meta_field)? implode(',', $this->array_flatten($record->$meta_field)) : $record->$meta_field);
 
 			array_push($array_data, $array_single_record);
 		}
@@ -430,6 +430,14 @@ class phimind_excel_export_plus extends phimind_plugin_manager_0_1
 
 	}
 
+	function array_flatten(array $array) {
+		$return = array();
+		foreach ($array as $key => $value) {
+		   if (is_array($value)){ $return = array_merge($return, $this->array_flatten($value));}
+		   else {$return[$key] = $value;}
+		}
+		return $return;
+	}
 
 	function ajax__fetch_records_list() {
 		$this->_set_query_args();
